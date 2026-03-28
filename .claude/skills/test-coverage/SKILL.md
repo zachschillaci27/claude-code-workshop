@@ -3,9 +3,6 @@ name: test-coverage
 description: Analyze test coverage and suggest missing tests
 argument-hint: "[file-or-directory, or blank for entire project]"
 allowed-tools: Read, Grep, Glob, Bash
-paths:
-  - "src/**/*.py"
-  - "tests/**/*.py"
 ---
 
 # Test Coverage Analysis
