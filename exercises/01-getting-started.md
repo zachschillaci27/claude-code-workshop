@@ -61,12 +61,14 @@ Ask Claude:
 - "Run the tests and tell me if anything fails"
 - "Run just the task endpoint tests"
 
-### 1.7 - Plan Mode
-Press `Shift+Tab` to enter **plan mode** (read-only). Then ask:
+### 1.7 - Permission Modes
+Press `Shift+Tab` to cycle permission modes. Stop at **plan mode** (read-only). Then ask:
 ```
 "How would you add pagination to the user list endpoint?"
 ```
-Claude will design the approach without changing any files. Press `Shift+Tab` again to exit.
+Claude will design the approach without changing any files. Press `Shift+Tab` to cycle back to default mode.
+
+Note: `Shift+Tab` cycles through modes: plan → auto → default, etc.
 
 ### 1.8 - Context Management
 As you work, conversation history fills up Claude's context window (~200K tokens).

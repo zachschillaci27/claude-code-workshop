@@ -23,7 +23,7 @@ claude --verbose             # Show detailed tool calls
 | `Enter` | Send message |
 | `Shift+Enter` | New line in prompt |
 | `Ctrl+C` | Interrupt Claude's response |
-| `Shift+Tab` | Toggle plan mode (read-only) |
+| `Shift+Tab` | Cycle permission modes (plan → auto → default...) |
 | `Ctrl+L` | Clear screen |
 | `@filename` | Reference a file in your prompt |
 | `/` | Open slash command menu |
@@ -48,7 +48,6 @@ Custom skills are also slash commands (e.g., `/review`, `/add-endpoint`).
 ./CLAUDE.md                    # Project (shared via git)
 ./.claude/CLAUDE.md            # Alt project location
 ~/.claude/CLAUDE.md            # User (personal, all projects)
-./.claude/CLAUDE.local.md      # Local (personal, gitignored)
 ```
 
 What to include:
@@ -141,8 +140,7 @@ Built-in agents: **Explore** (search, haiku), **Plan** (design, read-only)
 
 ```
 .mcp.json                          # Project (shared)
-.claude/.mcp.local.json            # Local (gitignored)
-~/.claude/.mcp.json                # User
+~/.claude.json                     # User / local (personal)
 ```
 
 ```json
@@ -176,7 +174,7 @@ Built-in agents: **Explore** (search, haiku), **Plan** (design, read-only)
 
 **Use plan mode for design:**
 ```
-Press Shift+Tab → "Design a caching layer for the database" → Shift+Tab to exit
+Press Shift+Tab to cycle to plan mode → "Design a caching layer for the database" → Shift+Tab to cycle back
 ```
 
 **Reference files directly:**

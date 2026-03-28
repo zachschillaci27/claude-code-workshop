@@ -25,7 +25,7 @@ A hands-on workshop to learn Claude Code from beginner to intermediate, built ar
 ## Prerequisites
 
 - Python 3.11+
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) installed and authenticated
+- [Claude Code](https://code.claude.com/docs/) installed and authenticated
 - A terminal (macOS, Linux, or WSL on Windows)
 
 ## Quick Start
@@ -109,7 +109,7 @@ This workshop covers the following Claude Code features:
 - **MCP Servers** - External integrations (GitHub example)
 - **Built-in tools** - Read, Edit, Write, Bash, Grep, Glob
 - **Built-in commands** - /init, /compact, /memory, /help
-- **Permission modes** - Allow/deny rules, plan mode
+- **Permission modes** - Allow/deny rules, plan mode (via `Shift+Tab` cycling)
 
 ## Tips for Workshop Facilitators
 

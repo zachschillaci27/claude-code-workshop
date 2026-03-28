@@ -123,9 +123,8 @@ cat CLAUDE.md
 → Explain: `/init` bootstraps a CLAUDE.md by analyzing your codebase
 
 **Briefly mention scopes:**
-- Project: `./CLAUDE.md` (shared via git)
+- Project: `./CLAUDE.md` or `.claude/CLAUDE.md` (shared via git)
 - User: `~/.claude/CLAUDE.md` (personal, all projects)
-- Local: `.claude/CLAUDE.local.md` (personal, this project, gitignored)
 
 ### 2B - Settings & Permissions (10 min) — LIVE CODING
 
@@ -150,11 +149,12 @@ cat .claude/settings.json
 - `deny` = block entirely (Claude gets error feedback)
 - Everything else = prompt the user
 
-**Show plan mode:**
-- Press `Shift+Tab` to toggle plan mode
+**Show permission modes:**
+- Press `Shift+Tab` to cycle permission modes — stop at **plan mode**
 - Ask: *"How would you refactor database.py to split task and user operations?"*
 → Point out: In plan mode, Claude can only read — it plans but doesn't change anything
-- Press `Shift+Tab` again to exit plan mode
+- Press `Shift+Tab` to cycle back to default mode
+→ Explain: `Shift+Tab` cycles through modes: plan → auto → default, etc.
 
 **Get participants to try** — Exercises 2 and 3 (5 min self-paced).
 
@@ -313,7 +313,7 @@ Watch Claude:
 3. **Create one skill** for your most common workflow (deploy, review, test)
 
 ### Resources
-- Docs: https://docs.anthropic.com/en/docs/claude-code
+- Docs: https://code.claude.com/docs/
 - Cheat sheet: See `CHEATSHEET.md` in this repo
 - Report issues: https://github.com/anthropics/claude-code/issues
 

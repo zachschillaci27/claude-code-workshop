@@ -29,8 +29,7 @@ File: `.mcp.json` (project root)
 | Scope | Path | Shared |
 |-------|------|--------|
 | Project | `.mcp.json` | Yes (git) |
-| User | `~/.claude/.mcp.json` | No |
-| Local | `.claude/.mcp.local.json` | No |
+| User / Local | `~/.claude.json` | No |
 
 ## Tasks
 
@@ -80,6 +79,6 @@ Popular MCP servers:
 ## Key Takeaways
 - MCP extends Claude with external tool access
 - Servers run as background processes via stdio
-- Use `.mcp.json` for shared config, `.mcp.local.json` for secrets
+- Use `.mcp.json` for shared config, `~/.claude.json` for personal servers
 - Environment variables in MCP config can reference `${VAR}` syntax
 - Many pre-built servers exist for popular services

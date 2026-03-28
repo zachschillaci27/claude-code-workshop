@@ -17,7 +17,6 @@ A markdown file that Claude reads at the start of every session. It tells Claude
 |-------|------|-----------|
 | Project | `./CLAUDE.md` or `./.claude/CLAUDE.md` | Git |
 | User | `~/.claude/CLAUDE.md` | Not shared |
-| Local | `.claude/CLAUDE.local.md` | Not shared (.gitignored) |
 
 ## Tasks
 
