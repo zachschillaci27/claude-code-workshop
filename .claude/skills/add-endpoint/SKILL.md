@@ -15,8 +15,8 @@ Create a new API endpoint for: $ARGUMENTS
 3. **Add database methods** if needed in `src/taskflow/database.py`
 4. **Add Pydantic models** if needed in `src/taskflow/models.py`
 5. **Write tests** in the appropriate test file
-6. **Run tests** with `pytest` to verify everything works
-7. **Run linter** with `ruff check src/ tests/` to check style
+6. **Run tests** with `uv run pytest` to verify everything works
+7. **Run linter** with `uv run ruff check src/ tests/` to check style
 
 ## Conventions (from CLAUDE.md)
 - All endpoints under `/api/v1/`

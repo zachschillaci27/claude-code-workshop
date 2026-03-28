@@ -35,9 +35,9 @@ Notice:
 
 ### 3.2 - Experience Permissions in Action
 Launch Claude and ask it to:
-1. "Run the tests" → Should auto-approve (pytest is in allow list)
+1. "Run the tests" → Should auto-approve (`uv` is in allow list)
 2. "Delete all files in src/" → Should be blocked (rm -rf is in deny list)
-3. "Install requests" → Should auto-approve (pip install is allowed)
+3. "Install requests" → Should auto-approve (`uv` is allowed)
 
 ### 3.3 - Tighten Permissions
 Edit `.claude/settings.json` to only allow read-only operations:

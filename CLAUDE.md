@@ -4,12 +4,12 @@ A Python FastAPI task management API used for the Claude Code workshop.
 
 ## Build & Run
 
-- Install: `pip install -e ".[dev]"`
-- Run server: `uvicorn taskflow.main:app --reload`
-- Run tests: `pytest`
-- Run single test: `pytest tests/test_tasks.py::test_create_task -v`
-- Lint: `ruff check src/ tests/`
-- Format: `ruff format src/ tests/`
+- Install: `uv sync`
+- Run server: `uv run uvicorn taskflow.main:app --reload`
+- Run tests: `uv run pytest`
+- Run single test: `uv run pytest tests/test_tasks.py::test_create_task -v`
+- Lint: `uv run ruff check src/ tests/`
+- Format: `uv run ruff format src/ tests/`
 
 ## Architecture
 

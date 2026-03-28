@@ -5,13 +5,16 @@ Get familiar with Claude Code basics: launching, navigating, and running command
 
 ## Setup
 ```bash
+# Install uv if you don't have it
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
 # Clone the repo and install dependencies
 git clone https://github.com/zachschillaci27/claude-code-workshop.git
 cd claude-code-workshop
-pip install -e ".[dev]"
+uv sync
 
 # Verify everything works
-pytest
+uv run pytest
 ```
 
 ## Tasks

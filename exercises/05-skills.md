@@ -112,8 +112,8 @@ disable-model-invocation: true
 ---
 
 !`echo "=== TaskFlow Status ==="`
-!`echo "Tests:" && pytest --tb=no -q 2>&1 | tail -1`
-!`echo "Lint:" && ruff check src/ 2>&1 | tail -1`
+!`echo "Tests:" && uv run pytest --tb=no -q 2>&1 | tail -1`
+!`echo "Lint:" && uv run ruff check src/ 2>&1 | tail -1`
 !`echo "Files:" && find src -name "*.py" | wc -l`
 !`echo "Lines:" && wc -l src/taskflow/*.py src/taskflow/routers/*.py | tail -1`
 ```

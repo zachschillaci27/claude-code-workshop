@@ -67,7 +67,7 @@ What to include:
 ```json
 {
   "permissions": {
-    "allow": ["Read", "Bash(pytest *)"],
+    "allow": ["Read", "Bash(uv run pytest *)"],
     "deny": ["Edit(.env*)", "Bash(rm -rf *)"]
   }
 }
@@ -91,7 +91,7 @@ Defined in settings.json under `"hooks"`:
       "matcher": "Edit|Write",
       "hooks": [{
         "type": "command",
-        "command": "ruff format $(cat | jq -r '.tool_input.file_path')"
+        "command": "uv run ruff format $(cat | jq -r '.tool_input.file_path')"
       }]
     }]
   }
@@ -160,7 +160,7 @@ Built-in agents: **Explore** (search, haiku), **Plan** (design, read-only)
 ```
 "Read"                    # All reads
 "Edit(src/**/*.py)"       # Edits to Python in src/
-"Bash(pytest *)"          # pytest with any args
+"Bash(uv run pytest *)"   # pytest with any args
 "Bash(git *)"             # all git commands
 "Write(tests/*)"          # new files in tests/
 ```

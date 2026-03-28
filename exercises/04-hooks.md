@@ -57,7 +57,7 @@ Edit `.claude/settings.json` and add to the `PostToolUse` array:
   "hooks": [
     {
       "type": "command",
-      "command": "file_path=$(cat | jq -r '.tool_input.file_path // empty'); if [[ \"$file_path\" == *.py ]]; then cd $CLAUDE_PROJECT_DIR && pytest --tb=short -q 2>&1 | tail -5; fi; exit 0"
+      "command": "file_path=$(cat | jq -r '.tool_input.file_path // empty'); if [[ \"$file_path\" == *.py ]]; then cd $CLAUDE_PROJECT_DIR && uv run pytest --tb=short -q 2>&1 | tail -5; fi; exit 0"
     }
   ]
 }

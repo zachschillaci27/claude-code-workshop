@@ -9,8 +9,9 @@ Step-by-step presenter guide for the Claude Code workshop. Times are approximate
 ### Setup Checklist
 - [ ] All participants have Claude Code installed and authenticated (`claude --version`)
 - [ ] Python 3.11+ installed (`python --version`)
-- [ ] Repo cloned and dependencies installed (`pip install -e ".[dev]"`)
-- [ ] Tests pass (`pytest`)
+- [ ] uv installed (`uv --version`) — install with `curl -LsSf https://astral.sh/uv/install.sh | sh`
+- [ ] Repo cloned and dependencies installed (`uv sync`)
+- [ ] Tests pass (`uv run pytest`)
 - [ ] Terminal visible on projector/screen share (use large font: 16pt+)
 
 ### Environment Tips
@@ -309,7 +310,7 @@ Watch Claude:
 
 ### Quick Wins to Take Home
 1. **Add CLAUDE.md** to your projects today — biggest ROI, 5 minutes of work
-2. **Allow common commands** in settings — `pytest`, `npm test`, `git` — reduces prompt fatigue
+2. **Allow common commands** in settings — `uv run pytest`, `npm test`, `git` — reduces prompt fatigue
 3. **Create one skill** for your most common workflow (deploy, review, test)
 
 ### Resources

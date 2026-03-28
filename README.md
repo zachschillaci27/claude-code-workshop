@@ -25,6 +25,7 @@ A hands-on workshop to learn Claude Code from beginner to intermediate, built ar
 ## Prerequisites
 
 - Python 3.11+
+- [uv](https://docs.astral.sh/uv/) installed (`curl -LsSf https://astral.sh/uv/install.sh | sh`)
 - [Claude Code](https://code.claude.com/docs/) installed and authenticated
 - A terminal (macOS, Linux, or WSL on Windows)
 
@@ -36,10 +37,10 @@ git clone https://github.com/zachschillaci27/claude-code-workshop.git
 cd claude-code-workshop
 
 # Install dependencies
-pip install -e ".[dev]"
+uv sync
 
 # Verify setup
-pytest
+uv run pytest
 
 # Start the workshop!
 claude
@@ -51,15 +52,15 @@ A task management REST API built with FastAPI. It's simple enough to understand 
 
 ### Run the API
 ```bash
-uvicorn taskflow.main:app --reload
+uv run uvicorn taskflow.main:app --reload
 # Open http://localhost:8000/docs for interactive API docs
 ```
 
 ### Run Tests
 ```bash
-pytest                                          # all tests
-pytest tests/test_tasks.py -v                   # task tests only
-pytest tests/test_tasks.py::test_create_task -v # single test
+uv run pytest                                          # all tests
+uv run pytest tests/test_tasks.py -v                   # task tests only
+uv run pytest tests/test_tasks.py::test_create_task -v # single test
 ```
 
 ### Project Structure

@@ -81,7 +81,7 @@ When asked to write tests:
 
 Test naming: `test_<action>_<scenario>` (e.g., `test_create_task_with_empty_title`)
 
-Always run `pytest -v` after writing tests to verify they pass.
+Always run `uv run pytest -v` after writing tests to verify they pass.
 ```
 
 Test it:

@@ -10,7 +10,7 @@ Analyze test coverage for: $ARGUMENTS (or entire project if not specified)
 
 ## Steps
 
-1. **Run existing tests**: `pytest -v` to see what passes
+1. **Run existing tests**: `uv run pytest -v` to see what passes
 2. **Identify all endpoints** in `src/taskflow/routers/`
 3. **Identify all database methods** in `src/taskflow/database.py`
 4. **Identify all utility functions** in `src/taskflow/utils.py`

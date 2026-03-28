@@ -4,11 +4,7 @@
       "Read",
       "Glob",
       "Grep",
-      "Bash(pip install *)",
-      "Bash(pytest *)",
-      "Bash(pytest)",
-      "Bash(ruff *)",
-      "Bash(uvicorn *)",
+      "Bash(uv *)",
       "Bash(python *)",
       "Bash(git *)"
     ],
@@ -24,7 +20,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "file_path=$(cat | jq -r '.tool_input.file_path // empty'); if [[ \"$file_path\" == *.py ]]; then ruff format --quiet \"$file_path\" 2>/dev/null; ruff check --fix --quiet \"$file_path\" 2>/dev/null; fi; exit 0"
+            "command": "file_path=$(cat | jq -r '.tool_input.file_path // empty'); if [[ \"$file_path\" == *.py ]]; then uv run ruff format --quiet \"$file_path\" 2>/dev/null; uv run ruff check --fix --quiet \"$file_path\" 2>/dev/null; fi; exit 0"
           }
         ]
       }
