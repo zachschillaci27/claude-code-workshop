@@ -42,12 +42,43 @@ Watch how Claude:
 2. Makes the edit
 3. Shows you the diff
 
-### 1.4 - Run Tests
+### 1.4 - @-Mentions: Reference Files Directly
+Instead of describing files, point Claude at them:
+```
+"Look at @src/taskflow/models.py and add a 'due_date' optional field to TaskCreate"
+```
+The `@` gives Claude immediate context — no searching required.
+
+### 1.5 - Interrupt & Recover
+Things go wrong sometimes. Practice these:
+
+1. **Interrupt**: Ask Claude to do something, then press `Ctrl+C` while it's working
+2. **Redirect**: Say *"Actually, undo that change"* — Claude can revert its own edits
+3. **Multi-line input**: Press `Shift+Enter` to write longer prompts across lines
+
+### 1.6 - Run Tests
 Ask Claude:
 - "Run the tests and tell me if anything fails"
 - "Run just the task endpoint tests"
+
+### 1.7 - Plan Mode
+Press `Shift+Tab` to enter **plan mode** (read-only). Then ask:
+```
+"How would you add pagination to the user list endpoint?"
+```
+Claude will design the approach without changing any files. Press `Shift+Tab` again to exit.
+
+### 1.8 - Context Management
+As you work, conversation history fills up Claude's context window (~200K tokens).
+
+- Run `/compact` to summarize and free up space
+- Use `claude --continue` to resume your last session later
+- Use `claude --resume` to pick from previous sessions
 
 ## Key Takeaways
 - Claude Code reads files before editing them
 - It uses tools (Read, Edit, Bash, Grep, Glob) to interact with your codebase
 - You approve or deny each action (unless permissions are configured)
+- Use `@file` to give Claude immediate context
+- `Ctrl+C` to interrupt, plan mode (`Shift+Tab`) to design before implementing
+- `/compact` keeps long sessions manageable
