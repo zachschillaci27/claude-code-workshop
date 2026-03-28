@@ -33,7 +33,7 @@ Claude uses the **Plan** agent to analyze the codebase and propose a strategy.
 ```
 "Run the tests"
 ```
-The PostToolUse hook auto-runs tests after each edit anyway!
+If you completed Exercise 4.3, the PostToolUse hook auto-runs tests after each edit!
 
 ### Step 6: Commit
 ```

@@ -15,7 +15,7 @@ A hands-on workshop to learn Claude Code from beginner to intermediate, built ar
 | 7 | [MCP Servers](exercises/07-mcp-servers.md) | External integrations | 5 min |
 | 8 | [Real-World Workflow](exercises/08-real-world-workflow.md) | Putting it all together | 15 min |
 
-**Total time: ~85 minutes**
+**Total exercise time: ~80 minutes** (or ~85 minutes with facilitated discussion — see [FACILITATOR.md](FACILITATOR.md))
 
 ## For Presenters
 

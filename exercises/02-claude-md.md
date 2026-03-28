@@ -50,9 +50,9 @@ Now ask Claude: "Add error logging to the task creation endpoint"
 Does it follow your new convention?
 
 ### 2.4 - Use /init to Generate CLAUDE.md
-Delete the existing CLAUDE.md and run:
-```bash
-claude /init
+Delete the existing CLAUDE.md, then launch Claude and type:
+```
+/init
 ```
 Compare what Claude generates vs what we had. What did it discover automatically?
 
