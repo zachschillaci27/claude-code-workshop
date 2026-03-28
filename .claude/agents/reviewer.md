@@ -2,7 +2,11 @@
 name: reviewer
 description: Review code changes for quality, security, and adherence to project standards. Use after making changes or before committing.
 tools: Read, Grep, Glob, Bash
+disallowedTools: Write, Edit
 model: sonnet
+effort: high
+maxTurns: 15
+skills: review
 ---
 
 You are a senior code reviewer for the TaskFlow project.

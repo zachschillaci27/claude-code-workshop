@@ -1,7 +1,10 @@
 ---
 name: add-endpoint
 description: Scaffold a new API endpoint with tests
-allowed-tools: Read, Write, Edit, Bash
+argument-hint: "[description of the endpoint]"
+allowed-tools: Read, Write, Edit, Bash, Grep, Glob
+context: fork
+agent: general-purpose
 ---
 
 # Add New Endpoint

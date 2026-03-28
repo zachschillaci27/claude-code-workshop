@@ -17,13 +17,24 @@ They can accept arguments, inject dynamic data, and restrict tool access.
 ### SKILL.md Format
 ```yaml
 ---
-name: my-skill
-description: What this skill does
-allowed-tools: Read, Edit, Bash    # optional: restrict tools
+name: my-skill                          # identifier (lowercase, hyphens)
+description: What this skill does       # shown in /menu and used by Claude
+argument-hint: "[filename]"             # hint shown during autocomplete
+allowed-tools: Read, Edit, Bash         # restrict tool access (optional)
+model: sonnet                           # model override (optional)
+effort: high                            # low | medium | high | max (optional)
+disable-model-invocation: false         # true = pure shell, no AI processing
+user-invocable: true                    # false = hidden from /menu
+context: fork                           # run in a forked subagent context
+agent: general-purpose                  # which subagent for context: fork
+paths:                                  # auto-load for matching file patterns
+  - "src/**/*.py"
 ---
 
 Prompt template here. Use $ARGUMENTS for user input.
 ```
+
+All fields are optional. Only `name` and `description` are recommended.
 
 ## Tasks
 
@@ -123,7 +134,10 @@ disable-model-invocation: true
 ## Key Takeaways
 - Skills package prompts into reusable `/commands`
 - `$ARGUMENTS` passes user input to the skill
-- `!`command`` injects live data before Claude processes
+- `` !`command` `` injects live data before Claude processes
 - `allowed-tools` restricts what the skill can do
-- `disable-model-invocation` creates pure shell scripts
+- `disable-model-invocation: true` creates pure shell scripts (no AI)
+- `paths` makes skills auto-load only for matching files
+- `context: fork` + `agent` delegates the skill to a subagent
+- `model` and `effort` control cost/quality tradeoffs per skill
 - Skills can be project-level (shared) or user-level (personal)

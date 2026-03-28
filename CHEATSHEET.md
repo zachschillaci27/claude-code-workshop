@@ -109,7 +109,16 @@ Defined in settings.json under `"hooks"`:
 ---
 name: my-skill
 description: What it does
-allowed-tools: Read, Edit, Bash    # optional
+argument-hint: "[file-or-directory]"    # autocomplete hint
+allowed-tools: Read, Edit, Bash         # restrict tool access
+model: sonnet                           # model override
+effort: high                            # low | medium | high | max
+disable-model-invocation: false         # true = pure shell, no AI
+user-invocable: true                    # false = hidden from /menu
+context: fork                           # run in forked subagent
+agent: general-purpose                  # subagent type for context: fork
+paths:                                  # auto-load for matching files
+  - "src/**/*.py"
 ---
 
 Prompt here. Use $ARGUMENTS for user input.
@@ -127,8 +136,16 @@ Dynamic context: !`git log --oneline -5`
 ---
 name: my-agent
 description: What it does
-tools: Read, Grep, Glob
-model: haiku                       # fast and cheap
+tools: Read, Grep, Glob               # allowed tools
+disallowedTools: Write, Edit           # denied tools
+model: haiku                           # sonnet | opus | haiku | inherit
+effort: low                            # low | medium | high | max
+maxTurns: 10                           # limit agentic turns
+memory: project                        # user | project | local
+skills: review, test-coverage          # preload skills
+permissionMode: default                # default | plan | acceptEdits | dontAsk
+background: false                      # true = always run in background
+isolation: worktree                    # run in isolated git worktree
 ---
 
 System prompt for the agent.

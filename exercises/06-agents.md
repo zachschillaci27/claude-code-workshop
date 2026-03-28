@@ -20,7 +20,28 @@ Specialized AI assistants that run in separate contexts with their own:
 
 ### Custom Agents
 ```
-.claude/agents/<name>.md
+.claude/agents/<name>.md           # Project (shared via git)
+~/.claude/agents/<name>.md         # User (personal)
+```
+
+### Agent Frontmatter Fields
+```yaml
+---
+name: my-agent                         # identifier (required)
+description: When to use this agent    # used by Claude for delegation (required)
+tools: Read, Grep, Glob               # allowed tools (inherits all if omitted)
+disallowedTools: Write, Edit           # tools to deny
+model: haiku                           # sonnet | opus | haiku | inherit
+effort: low                            # low | medium | high | max
+maxTurns: 10                           # limit agentic turns
+memory: project                        # persistent memory: user | project | local
+skills: review                         # preload skills into context
+permissionMode: default                # default | plan | acceptEdits | dontAsk
+background: false                      # true = always run in background
+isolation: worktree                    # run in isolated git worktree
+---
+
+System prompt goes here (markdown body).
 ```
 
 ## Tasks
@@ -63,7 +84,12 @@ Create `.claude/agents/test-writer.md`:
 name: test-writer
 description: Write comprehensive tests for Python code. Use when you need thorough test coverage.
 tools: Read, Write, Edit, Glob, Grep, Bash
+disallowedTools: Agent
 model: sonnet
+effort: high
+maxTurns: 20
+skills: test-coverage
+isolation: worktree
 ---
 
 You are a test engineering specialist for the TaskFlow project.
@@ -100,6 +126,10 @@ Watch Claude spawn multiple agents in parallel.
 ## Key Takeaways
 - Subagents isolate work and protect the main context window
 - Use `model: haiku` for fast, cheap research tasks
-- Custom agents define specialized roles with restricted tools
+- `tools` / `disallowedTools` control what agents can do
+- `maxTurns` prevents runaway agents
+- `memory: project` enables persistent learning across sessions
+- `isolation: worktree` gives agents a safe, isolated copy of your repo
+- `skills` preloads skill prompts into the agent's context
 - Claude automatically delegates to built-in agents (Explore, Plan)
 - Agents run in parallel when tasks are independent

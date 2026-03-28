@@ -1,7 +1,10 @@
 ---
 name: review
 description: Review code for quality, security, and best practices
+argument-hint: "[file-or-directory]"
 allowed-tools: Read, Grep, Glob
+model: sonnet
+effort: high
 ---
 
 # Code Review
