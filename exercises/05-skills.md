@@ -30,6 +30,7 @@ agent: general-purpose                  # which subagent for context: fork
 paths:                                  # auto-load for matching file patterns
   - "src/**/*.py"
 ---
+See https://code.claude.com/docs/en/skills#frontmatter-reference.
 
 Prompt template here. Use $ARGUMENTS for user input.
 ```

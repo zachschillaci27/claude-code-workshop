@@ -17,6 +17,7 @@ Specialized AI assistants that run in separate contexts with their own:
 | Explore | Read-only | Fast (Haiku) | Search, understand code |
 | Plan | Read-only | Normal | Design implementation strategy |
 | general-purpose | All tools | Normal | Complex multi-step tasks |
+See https://code.claude.com/docs/en/sub-agents#built-in-subagents.
 
 ### Custom Agents
 ```
@@ -29,7 +30,7 @@ Specialized AI assistants that run in separate contexts with their own:
 ---
 name: my-agent                         # identifier (required)
 description: When to use this agent    # used by Claude for delegation (required)
-tools: Read, Grep, Glob               # allowed tools (inherits all if omitted)
+tools: Read, Grep, Glob                # allowed tools (inherits all if omitted)
 disallowedTools: Write, Edit           # tools to deny
 model: haiku                           # sonnet | opus | haiku | inherit
 effort: low                            # low | medium | high | max
@@ -43,6 +44,7 @@ isolation: worktree                    # run in isolated git worktree
 
 System prompt goes here (markdown body).
 ```
+See https://code.claude.com/docs/en/sub-agents#supported-frontmatter-fields.
 
 ## Tasks
 

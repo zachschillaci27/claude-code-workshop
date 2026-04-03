@@ -16,6 +16,7 @@ Unlike CLAUDE.md (suggestions), hooks **enforce** through code execution.
 | `PostToolUse` | After a tool succeeds | Auto-format, lint, log |
 | `Notification` | Claude needs attention | Desktop/Slack notifications |
 | `SessionStart` | Session begins | Load env vars, inject context |
+See more https://code.claude.com/docs/en/hooks-guide#how-hooks-work.
 
 ### Hook I/O
 - **Input**: JSON on stdin with tool name, input, session info
