@@ -65,7 +65,7 @@ def delete_task(task_id: str) -> None:
         raise HTTPException(status_code=404, detail=f"Task {task_id} not found")
 
 
-@router.post("/{task_id}/assign")
+@router.post("/{task_id}/assign", response_model=Task)
 def assign_task(task_id: str, assignee: str = Query(...)) -> Task:
     """Assign a task to a user."""
     user = db.get_user_by_username(assignee)
