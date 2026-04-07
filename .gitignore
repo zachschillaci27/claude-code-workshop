@@ -30,3 +30,6 @@ Thumbs.db
 # Environment
 .env
 .env.local
+
+# Facilitator notes
+FACILITATOR.md
