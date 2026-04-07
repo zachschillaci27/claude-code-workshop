@@ -8,37 +8,45 @@ You've been asked to add a **task search endpoint** with full-text search by tit
 
 ## Workflow
 
-### Step 1: Plan with Claude
+### Step 1: Create a Feature Branch
+```
+"Create a new branch called feature/task-search"
+```
+Always work on a dedicated branch — never directly on main.
+
+### Step 2: Plan with Claude
 ```
 "I need to add a search endpoint for tasks. Plan the implementation - what files need to change and what's the approach?"
 ```
 Claude uses the **Plan** agent to analyze the codebase and propose a strategy.
 
-### Step 2: Scaffold with a Skill
+### Step 3: Scaffold with a Skill
 ```
 /add-endpoint "GET /api/v1/tasks/search - search tasks by title and description using a query parameter 'q'"
 ```
 
-### Step 3: Review the Changes
+### Step 4: Review the Changes
 ```
 /review src/taskflow/routers/tasks.py
 ```
+Review and understand every change before accepting it.
 
-### Step 4: Check Test Coverage
+### Step 5: Check Test Coverage
 ```
 /test-coverage src/taskflow/routers/tasks.py
 ```
 
-### Step 5: Run Tests
+### Step 6: Run Tests
 ```
 "Run the tests"
 ```
 If you completed Exercise 4.3, the PostToolUse hook auto-runs tests after each edit!
 
-### Step 6: Commit
+### Step 7: Commit and Push
 ```
-"Commit these changes with a descriptive message"
+"Commit these changes with a descriptive message and push the branch"
 ```
+From here you'd open a Pull Request and get a code review before merging.
 
 ## Bonus Challenges
 
