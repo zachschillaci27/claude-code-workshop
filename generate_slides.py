@@ -422,7 +422,7 @@ def main():
             "  ruff format + ruff check --fix runs automatically",
             "",
             "Block hardcoded secrets (PreToolUse):",
-            "  .claude/hooks/check-secrets.sh checks for password/token patterns",
+            "  .claude/hooks/block-hardcoded-keys.sh checks for password/token patterns",
             "  Exit code 2 = block, stderr becomes Claude's feedback",
             "",
             "Hook I/O:",

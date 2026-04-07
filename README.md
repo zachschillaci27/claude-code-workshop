@@ -81,7 +81,7 @@ CLAUDE.md                          # Project instructions
 .claude/
 ├── settings.json                  # Permissions & hooks
 ├── hooks/
-│   └── check-secrets.sh           # Blocks hardcoded secrets
+│   └── block-hardcoded-keys.sh           # Blocks hardcoded secrets
 ├── skills/
 │   ├── review/SKILL.md            # /review - Code review
 │   ├── add-endpoint/SKILL.md      # /add-endpoint - Scaffold endpoints

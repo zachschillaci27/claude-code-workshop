@@ -45,7 +45,7 @@ The hook should block this write with a warning.
 
 Look at the hook script:
 ```bash
-cat .claude/hooks/check-secrets.sh
+cat .claude/hooks/block-hardcoded-keys.sh
 ```
 
 ### 4.3 - Create a New Hook: Test Runner
