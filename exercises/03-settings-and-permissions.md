@@ -57,7 +57,7 @@ Restore the original settings when done.
 Add to `.claude/settings.local.json` (create this file):
 ```json
 {
-  "environment": {
+  "env": {
     "TASKFLOW_ENV": "workshop",
     "DEBUG": "true"
   }

@@ -4,18 +4,17 @@ A hands-on workshop to learn Claude Code from beginner to intermediate, built ar
 
 ## What You'll Learn
 
-| # | Exercise | Topic | Time |
-|---|----------|-------|------|
-| 1 | [Getting Started](exercises/01-getting-started.md) | Launch, explore, make changes | 10 min |
-| 2 | [CLAUDE.md](exercises/02-claude-md.md) | Project instructions & context | 10 min |
-| 3 | [Settings & Permissions](exercises/03-settings-and-permissions.md) | Configure behavior & access control | 10 min |
-| 4 | [Hooks](exercises/04-hooks.md) | Automation & guardrails | 10 min |
-| 5 | [Skills](exercises/05-skills.md) | Custom slash commands | 10 min |
-| 6 | [Agents](exercises/06-agents.md) | Specialized subagents | 10 min |
-| 7 | [MCP Servers](exercises/07-mcp-servers.md) | External integrations | 5 min |
-| 8 | [Real-World Workflow](exercises/08-real-world-workflow.md) | Putting it all together | 15 min |
-
-**Total exercise time: ~80 minutes** (or ~85 minutes with facilitated discussion — see [FACILITATOR.md](FACILITATOR.md))
+| # | Exercise | Topic |
+|---|----------|-------|
+| 1 | [Getting Started](exercises/01-getting-started.md) | Launch, explore, make changes |
+| 2 | [CLAUDE.md](exercises/02-claude-md.md) | Project instructions & context |
+| 3 | [Settings & Permissions](exercises/03-settings-and-permissions.md) | Configure behavior & access control |
+| 4 | [Hooks](exercises/04-hooks.md) | Automation & guardrails |
+| 5 | [Skills](exercises/05-skills.md) | Custom slash commands |
+| 6 | [Agents](exercises/06-agents.md) | Specialized subagents |
+| 7 | [MCP Servers](exercises/07-mcp-servers.md) | External integrations |
+| 8 | [Context Management](exercises/08-context-management.md) | Managing context & tool usage |
+| 9 | [Real-World Workflow](exercises/09-real-world-workflow.md) | Putting it all together |
 
 ## For Presenters
 
