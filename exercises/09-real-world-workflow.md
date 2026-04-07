@@ -1,4 +1,4 @@
-# Exercise 8: Real-World Workflow - Putting It All Together
+# Exercise 9: Real-World Workflow - Putting It All Together
 
 ## Goal
 Combine everything you've learned into a realistic development workflow.

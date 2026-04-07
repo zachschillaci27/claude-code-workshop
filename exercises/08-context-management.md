@@ -1,4 +1,4 @@
-# Exercise 9: Context Management
+# Exercise 8: Context Management
 
 ## Goal
 Understand how Claude's context window fills up, how to monitor it, and how to keep
