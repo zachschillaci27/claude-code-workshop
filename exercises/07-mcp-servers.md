@@ -160,7 +160,9 @@ MCP servers exist for many services. Adding them follows the same `.mcp.json` pa
     "github": {
       "type": "http",
       "url": "https://api.githubcopilot.com/mcp",
-      "headers": { "Authorization": "Bearer ${GITHUB_TOKEN}" }
+      "headers": {
+        "Authorization": "Bearer ${GITHUB_TOKEN}"
+      }
     },
     "filesystem": {
       "command": "npx",
