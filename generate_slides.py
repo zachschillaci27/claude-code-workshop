@@ -1,9 +1,9 @@
 """Generate PPTX slides from the workshop slide content."""
 
 from pptx import Presentation
-from pptx.util import Inches, Pt, Emu
 from pptx.dml.color import RGBColor
-from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
+from pptx.enum.text import PP_ALIGN
+from pptx.util import Inches, Pt
 
 # Theme colors
 BG_DARK = RGBColor(0x0F, 0x0F, 0x1E)
@@ -45,7 +45,16 @@ def add_title(tf, text, size=Pt(36), color=TEXT_HEADING):
     return p
 
 
-def add_para(tf, text, size=Pt(18), color=TEXT_MAIN, bold=False, space_before=Pt(6), bullet=False, font_name=FONT_BODY):
+def add_para(
+    tf,
+    text,
+    size=Pt(18),
+    color=TEXT_MAIN,
+    bold=False,
+    space_before=Pt(6),
+    bullet=False,
+    font_name=FONT_BODY,
+):
     p = tf.add_paragraph()
     p.text = text
     p.font.size = size
@@ -89,7 +98,9 @@ def make_content_slide(prs, title, bullets, code=None):
 
     y = Inches(1.3)
     if bullets:
-        tf2 = add_text_box(slide, Inches(0.6), y, Inches(8.8), Inches(3.5) if code else Inches(5.5))
+        tf2 = add_text_box(
+            slide, Inches(0.6), y, Inches(8.8), Inches(3.5) if code else Inches(5.5)
+        )
         first = True
         for b in bullets:
             if first:
@@ -120,7 +131,9 @@ def make_table_slide(prs, title, headers, rows):
     cols = len(headers)
     n_rows = len(rows) + 1
     col_width = Inches(8.8 / cols)
-    table_shape = slide.shapes.add_table(n_rows, cols, Inches(0.6), Inches(1.4), Inches(8.8), Inches(0.45 * n_rows))
+    table_shape = slide.shapes.add_table(
+        n_rows, cols, Inches(0.6), Inches(1.4), Inches(8.8), Inches(0.45 * n_rows)
+    )
     table = table_shape.table
 
     for i, h in enumerate(headers):
@@ -152,36 +165,54 @@ def main():
     prs.slide_height = Inches(7.5)
 
     # --- SLIDE 1: Title ---
-    make_title_slide(prs, "Claude Code Workshop", "From Beginner to Intermediate\n\nAn interactive, hands-on session with a real codebase\n\n~85 minutes  |  8 exercises  |  Live coding")
+    make_title_slide(
+        prs,
+        "Claude Code Workshop",
+        "From Beginner to Intermediate\n\nAn interactive, hands-on session with a real codebase\n\n~95 minutes  |  9 exercises  |  Live coding",
+    )
 
     # --- SLIDE 2: Agenda ---
-    make_table_slide(prs, "Agenda",
+    make_table_slide(
+        prs,
+        "Agenda",
         ["Part", "Topics", "Time"],
         [
             ["1. Foundations", "Launch, explore, edit, recover", "25 min"],
             ["2. Configuration", "CLAUDE.md, settings, permissions", "20 min"],
             ["3. Automation", "Hooks, custom skills", "20 min"],
-            ["4. Advanced", "Subagents, context, real-world workflow", "15 min"],
+            [
+                "4. Advanced",
+                "Subagents, MCP, context management, real-world workflow",
+                "20 min",
+            ],
             ["Wrap-up", "Quick wins, Q&A", "5 min"],
-        ])
+        ],
+    )
 
     # --- SLIDE 3: Setup ---
-    make_content_slide(prs, "Setup Check", [], code=[
-        "claude --version         # Claude Code installed",
-        "python --version         # Python 3.11+",
-        "uv --version             # uv package manager",
-        "",
-        "git clone https://github.com/zachschillaci27/claude-code-workshop.git",
-        "cd claude-code-workshop",
-        "uv sync",
-        "uv run pytest            # 18 tests should pass",
-    ])
+    make_content_slide(
+        prs,
+        "Setup Check",
+        [],
+        code=[
+            "claude --version         # Claude Code installed",
+            "python --version         # Python 3.11+",
+            "uv --version             # uv package manager",
+            "",
+            "git clone https://github.com/zachschillaci27/claude-code-workshop.git",
+            "cd claude-code-workshop",
+            "uv sync",
+            "uv run pytest            # 18 tests should pass",
+        ],
+    )
 
     # --- SLIDE 4: Part 1 section ---
     make_title_slide(prs, "Part 1", "Foundations", is_section=True)
 
     # --- SLIDE 5: What is Claude Code ---
-    make_content_slide(prs, "Exercise 1 — Getting Started",
+    make_content_slide(
+        prs,
+        "Exercise 1 — Getting Started",
         [
             "What is Claude Code?",
             "",
@@ -190,10 +221,13 @@ def main():
             "Reads, searches, edits files, runs commands",
             "You approve each action (unless configured otherwise)",
         ],
-        code=["claude"])
+        code=["claude"],
+    )
 
     # --- SLIDE 6: Core Tools ---
-    make_table_slide(prs, "Core Tools",
+    make_table_slide(
+        prs,
+        "Core Tools",
         ["Tool", "Purpose"],
         [
             ["Read", "Read file contents"],
@@ -202,10 +236,13 @@ def main():
             ["Bash", "Run shell commands"],
             ["Grep", "Search file contents"],
             ["Glob", "Find files by pattern"],
-        ])
+        ],
+    )
 
     # --- SLIDE 7: Try It ---
-    make_content_slide(prs, "Try It",
+    make_content_slide(
+        prs,
+        "Try It",
         [
             "Watch how Claude reads first, then edits, and asks for permission.",
         ],
@@ -217,10 +254,13 @@ def main():
             '"Run the tests"',
             "",
             '"Add a description field to the /health endpoint"',
-        ])
+        ],
+    )
 
     # --- SLIDE 8: Essential Navigation ---
-    make_content_slide(prs, "Essential Navigation",
+    make_content_slide(
+        prs,
+        "Essential Navigation",
         [
             "@-mentions — Point Claude at a file directly:",
             '    "Look at @src/taskflow/models.py and add a due_date field"',
@@ -233,22 +273,30 @@ def main():
             "    default -> acceptEdits -> plan -> ...",
             "",
             "Plan mode = read-only. Claude designs but doesn't change anything.",
-        ])
+        ],
+    )
 
-    # --- SLIDE 9: Context Management ---
-    make_table_slide(prs, "Context Management",
+    # --- SLIDE 9: Essential Session Commands ---
+    make_table_slide(
+        prs,
+        "Essential Session Commands",
         ["Command", "What it does"],
         [
-            ["/compact", "Summarize conversation, free up space"],
+            ["/context", "Show context window usage (%)"],
+            ["/compact", "Summarize history, free up space"],
+            ["/memory", "View / edit persistent memory"],
             ["claude --continue", "Resume your last session"],
             ["claude --resume", "Pick from previous sessions"],
-        ])
+        ],
+    )
 
     # --- SLIDE 10: Part 2 section ---
     make_title_slide(prs, "Part 2", "Configuration", is_section=True)
 
     # --- SLIDE 11: CLAUDE.md ---
-    make_content_slide(prs, "Exercise 2 — CLAUDE.md",
+    make_content_slide(
+        prs,
+        "Exercise 2 — CLAUDE.md",
         [
             "The single most impactful file for productivity",
             "",
@@ -262,29 +310,37 @@ def main():
             "  ./CLAUDE.md              — Project (shared via git)",
             "  ./.claude/CLAUDE.md      — Alt project location",
             "  ~/.claude/CLAUDE.md      — User (personal, all projects)",
-        ])
+        ],
+    )
 
     # --- SLIDE 12: CLAUDE.md content ---
-    make_content_slide(prs, "What to Put in CLAUDE.md", [], code=[
-        "# TaskFlow API",
-        "",
-        "## Build & Run",
-        "- Install: `uv sync`",
-        "- Run tests: `uv run pytest`",
-        "- Lint: `uv run ruff check src/ tests/`",
-        "",
-        "## Code Conventions",
-        "- Use type hints on all function signatures",
-        "- Prefer `str | None` over `Optional[str]`",
-        "- Keep endpoint handlers thin",
-        "",
-        "## Architecture",
-        "- src/taskflow/main.py  — FastAPI entry point",
-        "- src/taskflow/models.py — Pydantic models",
-    ])
+    make_content_slide(
+        prs,
+        "What to Put in CLAUDE.md",
+        [],
+        code=[
+            "# TaskFlow API",
+            "",
+            "## Build & Run",
+            "- Install: `uv sync`",
+            "- Run tests: `uv run pytest`",
+            "- Lint: `uv run ruff check src/ tests/`",
+            "",
+            "## Code Conventions",
+            "- Use type hints on all function signatures",
+            "- Prefer `str | None` over `Optional[str]`",
+            "- Keep endpoint handlers thin",
+            "",
+            "## Architecture",
+            "- src/taskflow/main.py  — FastAPI entry point",
+            "- src/taskflow/models.py — Pydantic models",
+        ],
+    )
 
     # --- SLIDE 13: CLAUDE.md effect ---
-    make_content_slide(prs, "The Effect",
+    make_content_slide(
+        prs,
+        "The Effect",
         [
             "Without CLAUDE.md:",
             "  Claude guesses at conventions, might use wrong commands",
@@ -297,10 +353,13 @@ def main():
             "  Check: Type hints? /api/v1/ prefix? 404 handling?",
             "",
             "Bootstrap with /init — Claude analyzes your codebase and generates one",
-        ])
+        ],
+    )
 
     # --- SLIDE 14: Settings ---
-    make_content_slide(prs, "Exercise 3 — Settings & Permissions",
+    make_content_slide(
+        prs,
+        "Exercise 3 — Settings & Permissions",
         [
             "Settings enforce behavior. CLAUDE.md guides behavior.",
             "",
@@ -312,42 +371,52 @@ def main():
             "  allow = auto-approve (no permission prompt)",
             "  deny  = block entirely (Claude gets error feedback)",
             "  neither = prompt the user each time",
-        ])
+        ],
+    )
 
     # --- SLIDE 15: Permission rules ---
-    make_content_slide(prs, "Permission Rules", [
-            'Pattern syntax: ToolName(glob pattern)',
+    make_content_slide(
+        prs,
+        "Permission Rules",
+        [
+            "Pattern syntax: ToolName(glob pattern)",
         ],
         code=[
-            '{',
+            "{",
             '  "permissions": {',
             '    "allow": [',
             '      "Read", "Glob", "Grep",',
             '      "Bash(uv *)", "Bash(git *)"',
-            '    ],',
+            "    ],",
             '    "deny": [',
             '      "Bash(rm -rf *)",',
             '      "Edit(.env*)"',
-            '    ]',
-            '  }',
-            '}',
-        ])
+            "    ]",
+            "  }",
+            "}",
+        ],
+    )
 
     # --- SLIDE 16: Part 3 section ---
     make_title_slide(prs, "Part 3", "Automation", is_section=True)
 
     # --- SLIDE 17: Hooks ---
-    make_table_slide(prs, "Exercise 4 — Hooks",
+    make_table_slide(
+        prs,
+        "Exercise 4 — Hooks",
         ["Event", "When", "Use For"],
         [
             ["PreToolUse", "Before a tool runs", "Block dangerous actions"],
             ["PostToolUse", "After a tool succeeds", "Auto-format, lint"],
             ["Notification", "Claude needs attention", "Desktop alerts"],
             ["SessionStart", "Session begins", "Load env vars"],
-        ])
+        ],
+    )
 
     # --- SLIDE 18: Hook examples ---
-    make_content_slide(prs, "Hook Examples in This Project",
+    make_content_slide(
+        prs,
+        "Hook Examples in This Project",
         [
             "Auto-format after every edit (PostToolUse):",
             "  ruff format + ruff check --fix runs automatically",
@@ -359,10 +428,13 @@ def main():
             "Hook I/O:",
             "  Input: JSON on stdin with tool_name, tool_input, session_id",
             "  Exit 0 = proceed  |  Exit 2 = block",
-        ])
+        ],
+    )
 
     # --- SLIDE 19: Demo hooks ---
-    make_content_slide(prs, "Demo: Hooks in Action",
+    make_content_slide(
+        prs,
+        "Demo: Hooks in Action",
         [
             "Auto-format:",
         ],
@@ -370,12 +442,15 @@ def main():
             '"Add a function to utils.py with really bad formatting"',
             "# -> ruff fixes it automatically after Claude writes",
             "",
-            '"Add DATABASE_URL = \'postgresql://admin:secret@prod:5432/db\'"',
+            "\"Add DATABASE_URL = 'postgresql://admin:secret@prod:5432/db'\"",
             "# -> Hook blocks the write! Claude gets feedback.",
-        ])
+        ],
+    )
 
     # --- SLIDE 20: Skills ---
-    make_content_slide(prs, "Exercise 5 — Custom Skills",
+    make_content_slide(
+        prs,
+        "Exercise 5 — Custom Skills",
         [
             "Reusable workflows as /slash-commands",
             "",
@@ -385,7 +460,7 @@ def main():
         code=[
             "---",
             "name: review",
-            'description: Review code for quality and security',
+            "description: Review code for quality and security",
             'argument-hint: "[file-or-directory]"',
             "allowed-tools: Read, Grep, Glob",
             "model: sonnet",
@@ -393,10 +468,13 @@ def main():
             "---",
             "",
             "Review $ARGUMENTS against the project's coding standards.",
-        ])
+        ],
+    )
 
     # --- SLIDE 21: Skill fields ---
-    make_table_slide(prs, "Skill Frontmatter Fields",
+    make_table_slide(
+        prs,
+        "Skill Frontmatter Fields",
         ["Field", "Purpose"],
         [
             ["name", "Slash command identifier"],
@@ -408,10 +486,14 @@ def main():
             ["user-invocable", "false = hidden from menu"],
             ["context: fork + agent", "Delegate to a subagent"],
             ["paths", "Auto-load only for matching files"],
-        ])
+        ],
+    )
 
     # --- SLIDE 22: Try skills ---
-    make_content_slide(prs, "Try the Pre-Built Skills", [],
+    make_content_slide(
+        prs,
+        "Try the Pre-Built Skills",
+        [],
         code=[
             "/review src/taskflow/routers/tasks.py",
             "# -> Structured code review against project standards",
@@ -421,22 +503,28 @@ def main():
             "",
             '/add-endpoint "GET /api/v1/tasks/search - search by title"',
             "# -> Scaffolds endpoint + database method + tests",
-        ])
+        ],
+    )
 
     # --- SLIDE 23: Part 4 section ---
     make_title_slide(prs, "Part 4", "Advanced", is_section=True)
 
     # --- SLIDE 24: Subagents ---
-    make_table_slide(prs, "Exercise 6 — Subagents",
+    make_table_slide(
+        prs,
+        "Exercise 6 — Subagents",
         ["Built-in", "Model", "Tools", "Use For"],
         [
             ["Explore", "Haiku (fast)", "Read-only", "Search, analyze"],
             ["Plan", "Inherited", "Read-only", "Design strategy"],
             ["general-purpose", "Inherited", "All", "Complex tasks"],
-        ])
+        ],
+    )
 
     # --- SLIDE 25: Agent fields ---
-    make_table_slide(prs, "Agent Frontmatter Fields",
+    make_table_slide(
+        prs,
+        "Agent Frontmatter Fields",
         ["Field", "Purpose"],
         [
             ["name / description", "Identity (required)"],
@@ -449,34 +537,100 @@ def main():
             ["permissionMode", "default, plan, acceptEdits"],
             ["isolation", "worktree — isolated git worktree"],
             ["background", "true = always run in background"],
-        ])
+        ],
+    )
 
-    # --- SLIDE 26: MCP ---
-    make_content_slide(prs, "Exercise 7 — MCP Servers",
+    # --- SLIDE 26: This Project's Agents ---
+    make_content_slide(
+        prs,
+        "This Project's Agents",
         [
-            "Connect Claude to external tools and services",
-            "",
-            "Note: External MCP servers require network access — may be",
-            "restricted by sandbox policies. Check your org's settings.",
-            "",
-            ".mcp.json         — Project (shared via git)",
-            "~/.claude.json    — User / local (personal)",
+            "Researcher — fast, cheap, read-only",
         ],
         code=[
-            "// .mcp.json",
-            '{',
-            '  "mcpServers": {',
-            '    "github": {',
-            '      "type": "stdio",',
-            '      "command": "npx",',
-            '      "args": ["-y", "@anthropic-ai/github-mcp"]',
-            '    }',
-            '  }',
-            '}',
-        ])
+            "model: haiku",
+            "effort: low",
+            "maxTurns: 10",
+            "memory: project         # learns across sessions",
+            "disallowedTools: Write, Edit, Bash",
+            "",
+            "# Reviewer — thorough code review",
+            "model: sonnet",
+            "effort: high",
+            "maxTurns: 15",
+            "skills: review          # preloads /review skill",
+            "disallowedTools: Write, Edit",
+        ],
+    )
 
-    # --- SLIDE 27: Real-world workflow ---
-    make_content_slide(prs, "Exercise 8 — Real-World Workflow",
+    # --- SLIDE 27: MCP ---
+    make_content_slide(
+        prs,
+        "Exercise 7 — MCP Servers",
+        [
+            "Connect Claude to external tools and services",
+            "External MCP servers require network access — may be restricted by sandbox policies",
+            "",
+            "Two transport types:",
+        ],
+        code=[
+            "// HTTP (remote endpoint)",
+            '{ "type": "http", "url": "https://api.example.com/mcp",',
+            '  "headers": { "Authorization": "Bearer ${TOKEN}" } }',
+            "",
+            "// stdio (local subprocess)",
+            '{ "type": "stdio", "command": "npx",',
+            '  "args": ["-y", "@modelcontextprotocol/server-filesystem", "/tmp"] }',
+        ],
+    )
+
+    # --- SLIDE 28: Context Management ---
+    make_content_slide(
+        prs,
+        "Exercise 8 — Context Management",
+        [
+            "Keep long sessions productive",
+            "",
+            "Claude has a ~200K token context window. It fills up fast:",
+        ],
+    )
+
+    # --- SLIDE 29: Monitor, Compact, Remember ---
+    make_content_slide(
+        prs,
+        "Monitor, Compact, Remember",
+        [
+            "Check usage:",
+            "  /context          — shows current % used",
+            "",
+            "Free up space:",
+            "  /compact          — summarizes history (do this proactively at ~70%)",
+            "  Auto-compaction triggers at ~95% — less precise, don't wait for it.",
+            "",
+            "Persist facts across sessions:",
+            "  /memory           — opens auto-memory files",
+            "  Saves to ~/.claude/projects/<path>/memory/MEMORY.md — loaded every session.",
+        ],
+    )
+
+    # --- SLIDE 30: Context Strategy ---
+    make_table_slide(
+        prs,
+        "Context Strategy",
+        ["Situation", "Action"],
+        [
+            ["Between major tasks", "/compact to clear noise"],
+            ["Context > 70%", "/compact proactively"],
+            ["Context > 90%", "New session + claude --continue"],
+            ["Large read-only research", "Use an Explore subagent (isolated context)"],
+            ["Convention Claude keeps forgetting", "Add to /memory or CLAUDE.md"],
+        ],
+    )
+
+    # --- SLIDE 31: Real-world workflow ---
+    make_content_slide(
+        prs,
+        "Exercise 9 — Real-World Workflow",
         [
             "Putting it all together:",
             "",
@@ -493,15 +647,18 @@ def main():
         ],
         code=[
             '"Add a search endpoint for tasks — case-insensitive',
-            ' substring match on title and description via query',
-            ' param \'q\'. Update database, endpoint, and tests."',
-        ])
+            " substring match on title and description via query",
+            " param 'q'. Update database, endpoint, and tests.\"",
+        ],
+    )
 
     # --- SLIDE 28: Wrap-up ---
     make_title_slide(prs, "Wrap-Up", is_section=True)
 
     # --- SLIDE 29: Quick wins ---
-    make_content_slide(prs, "Quick Wins to Take Home",
+    make_content_slide(
+        prs,
+        "Quick Wins to Take Home",
         [
             "Today:",
             "  1. Add CLAUDE.md to your projects — biggest ROI, 5 minutes",
@@ -513,10 +670,13 @@ def main():
             "This month:",
             "  4. Add hooks — auto-format, secret detection",
             "  5. Create custom agents for your team's review/research needs",
-        ])
+        ],
+    )
 
     # --- SLIDE 30: Config landscape ---
-    make_table_slide(prs, "The Configuration Landscape",
+    make_table_slide(
+        prs,
+        "The Configuration Landscape",
         ["Feature", "File", "Guides vs Enforces"],
         [
             ["CLAUDE.md", "./CLAUDE.md", "Guides"],
@@ -525,10 +685,14 @@ def main():
             ["Skills", ".claude/skills/*/SKILL.md", "Guides"],
             ["Agents", ".claude/agents/*.md", "Both"],
             ["MCP", ".mcp.json", "Extends"],
-        ])
+            ["Memory", "~/.claude/projects/*/memory/", "Persists"],
+        ],
+    )
 
     # --- SLIDE 31: Resources ---
-    make_content_slide(prs, "Resources",
+    make_content_slide(
+        prs,
+        "Resources",
         [
             "Docs: https://code.claude.com/docs/",
             "Cheat sheet: CHEATSHEET.md in this repo",
@@ -537,10 +701,13 @@ def main():
             "",
             "Platforms:",
             "  Terminal  |  VS Code extension  |  JetBrains plugin  |  Web app",
-        ])
+        ],
+    )
 
     # --- SLIDE 32: Questions ---
-    make_title_slide(prs, "Questions?", 'claude\n> "What should I ask about Claude Code?"')
+    make_title_slide(
+        prs, "Questions?", 'claude\n> "What should I ask about Claude Code?"'
+    )
 
     prs.save("slides.pptx")
     print(f"Generated slides.pptx with {len(prs.slides)} slides")
