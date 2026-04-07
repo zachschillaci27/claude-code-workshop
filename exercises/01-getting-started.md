@@ -4,6 +4,8 @@
 Get familiar with Claude Code basics: launching, navigating, and running commands.
 
 ## Setup
+
+Run these commands in a **regular terminal** (not inside Claude Code):
 ```bash
 # Install uv if you don't have it
 curl -LsSf https://astral.sh/uv/install.sh | sh

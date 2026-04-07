@@ -36,7 +36,7 @@ effort: low                            # low | medium | high | max
 maxTurns: 10                           # limit agentic turns
 memory: project                        # persistent memory: user | project | local
 skills: review                         # preload skills into context
-permissionMode: default                # default | plan | acceptEdits | dontAsk
+permissionMode: default                # default | plan | acceptEdits
 background: false                      # true = always run in background
 isolation: worktree                    # run in isolated git worktree
 ---

@@ -500,7 +500,7 @@ Custom agents go in:
 | `maxTurns` | Limit agentic turns |
 | `memory` | `user`, `project`, `local` — persistent learning |
 | `skills` | Preload skills into context |
-| `permissionMode` | `default`, `plan`, `acceptEdits`, `dontAsk` |
+| `permissionMode` | `default`, `plan`, `acceptEdits` |
 | `isolation` | `worktree` — isolated git worktree |
 | `background` | `true` = always run in background |
 
@@ -531,6 +531,7 @@ disallowedTools: Write, Edit
 # Exercise 7 — MCP Servers
 
 ### Connect Claude to external tools and services
+> External MCP servers require network access — may be restricted by sandbox policies
 
 ```json
 // .mcp.json (project root)
@@ -563,15 +564,16 @@ disallowedTools: Write, Edit
 ```
 
 Watch Claude:
-1. **Read** existing code (Grep, Read)
-2. **Plan** the approach (may use Plan agent)
-3. **Edit** database.py (hook: auto-formats)
-4. **Edit** tasks.py (hook: auto-formats)
-5. **Write** tests
-6. **Run** tests (Bash)
-7. **Commit** changes
+1. **Branch** — create feature branch
+2. **Read** existing code (Grep, Read)
+3. **Plan** the approach (may use Plan agent)
+4. **Edit** database.py (hook: auto-formats)
+5. **Edit** tasks.py (hook: auto-formats)
+6. **Write** tests
+7. **Run** tests (Bash)
+8. **Commit & push** — then open a PR for review
 
-> CLAUDE.md conventions + hooks + multi-file coordination
+> Branch workflow + CLAUDE.md conventions + hooks + multi-file coordination
 
 ---
 

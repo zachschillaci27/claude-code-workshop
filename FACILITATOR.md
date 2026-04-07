@@ -9,7 +9,7 @@ Step-by-step presenter guide for the Claude Code workshop. Times are approximate
 ### Setup Checklist
 - [ ] All participants have Claude Code installed and authenticated (`claude --version`)
 - [ ] Python 3.11+ installed (`python --version`)
-- [ ] uv installed (`uv --version`) — install with `curl -LsSf https://astral.sh/uv/install.sh | sh`
+- [ ] uv installed (`uv --version`) — install in a regular terminal with `curl -LsSf https://astral.sh/uv/install.sh | sh`
 - [ ] Repo cloned and dependencies installed (`uv sync`)
 - [ ] Tests pass (`uv run pytest`)
 - [ ] Terminal visible on projector/screen share (use large font: 16pt+)
@@ -299,10 +299,11 @@ Watch Claude:
 
 → Point out: CLAUDE.md conventions followed, hooks ran automatically, multi-file coordinated change
 
-**If time permits, commit:**
+**If time permits, demonstrate the full git workflow:**
 ```
-"Commit these changes"
+"Create a feature branch, commit these changes, and push"
 ```
+→ Point out: Always work on a branch, never directly on main. Open a PR for code review.
 
 ---
 
