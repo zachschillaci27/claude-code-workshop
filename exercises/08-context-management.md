@@ -87,7 +87,7 @@ starts fresh — so you may need to re-read files Claude previously had in conte
 
 ## Tasks
 
-### 9.1 - Check Your Current Context Usage
+### 8.1 - Check Your Current Context Usage
 Inside a Claude Code session, run:
 ```
 /context
@@ -101,7 +101,7 @@ Note the percentage. Then ask Claude to read a few large files and check again:
 ```
 Observe how file reads move the needle.
 
-### 9.2 - Compact Between Tasks
+### 8.2 - Compact Between Tasks
 After completing a feature or bug fix, run:
 ```
 /compact
@@ -112,7 +112,7 @@ Then verify Claude still remembers the key decisions:
 ```
 Claude should give a coherent summary even though the raw history is gone.
 
-### 9.3 - Inspect Auto-Memory
+### 8.3 - Inspect Auto-Memory
 ```
 /memory
 ```
@@ -124,7 +124,7 @@ Ask Claude to save something explicitly:
 ```
 Then check `/memory` again — a new entry should appear.
 
-### 9.4 - Simulate Context Pressure
+### 8.4 - Simulate Context Pressure
 Ask Claude to do something context-heavy in one session:
 ```
 "Read every file in the project, explain each one, then summarize the whole architecture"
@@ -132,7 +132,7 @@ Ask Claude to do something context-heavy in one session:
 Watch `/context` climb. When it gets above 70%, run `/compact` and compare the
 percentage before and after.
 
-### 9.5 - Resume a Session
+### 8.5 - Resume a Session
 Exit Claude Code (`/exit` or `Ctrl+D`), then re-enter:
 ```bash
 claude --continue
