@@ -1,11 +1,10 @@
 {
   "mcpServers": {
     "github": {
-      "type": "stdio",
-      "command": "npx",
-      "args": ["-y", "@anthropic-ai/github-mcp"],
-      "env": {
-        "GITHUB_TOKEN": "${GITHUB_TOKEN}"
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp",
+      "headers": {
+        "Authorization": "Bearer YOUR_GITHUB_PAT"
       }
     }
   }
