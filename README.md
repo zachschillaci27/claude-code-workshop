@@ -16,11 +16,6 @@ A hands-on workshop to learn Claude Code from beginner to intermediate, built ar
 | 8 | [Context Management](exercises/08-context-management.md) | Managing context & tool usage |
 | 9 | [Real-World Workflow](exercises/09-real-world-workflow.md) | Putting it all together |
 
-## For Presenters
-
-- **[FACILITATOR.md](FACILITATOR.md)** — Step-by-step presenter guide with talking points, demo scripts, and timing
-- **[CHEATSHEET.md](CHEATSHEET.md)** — Quick-reference card for participants to keep after the workshop
-
 ## Prerequisites
 
 - Python 3.11+
@@ -110,11 +105,3 @@ This workshop covers the following Claude Code features:
 - **Built-in tools** - Read, Edit, Write, Bash, Grep, Glob
 - **Built-in commands** - /init, /compact, /memory, /help
 - **Permission modes** - Allow/deny rules, plan mode (via `Shift+Tab` cycling)
-
-## Tips for Workshop Facilitators
-
-1. **Start with Exercise 1** - Get everyone running Claude Code successfully
-2. **Live code together** - Do exercises 2-4 as a group with screen sharing
-3. **Let people explore** - Exercises 5-8 work well as self-paced
-4. **Use the bonus challenges** in Exercise 8 for fast learners
-5. **Encourage experimentation** - The in-memory database resets on restart, so nothing breaks permanently

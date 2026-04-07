@@ -695,7 +695,6 @@ def main():
         "Resources",
         [
             "Docs: https://code.claude.com/docs/",
-            "Cheat sheet: CHEATSHEET.md in this repo",
             "Report issues: https://github.com/anthropics/claude-code/issues",
             "Exercises: exercises/ directory for self-paced review",
             "",
