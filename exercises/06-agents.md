@@ -112,6 +112,8 @@ Test naming: `test_<action>_<scenario>` (e.g., `test_create_task_with_empty_titl
 Always run `uv run pytest -v` after writing tests to verify they pass.
 ```
 
+Note: `isolation: worktree` means the agent works on an isolated copy of the repo. Its changes will be on a separate branch — Claude will tell you the branch name when it's done.
+
 Test it:
 ```
 "Use the test-writer agent to add comprehensive tests for the user endpoints"

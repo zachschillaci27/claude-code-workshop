@@ -73,7 +73,7 @@ Press `Shift+Tab` to cycle permission modes. Stop at **plan mode** (read-only). 
 ```
 Claude will design the approach without changing any files. Press `Shift+Tab` to cycle back to default mode.
 
-Note: `Shift+Tab` cycles through modes: plan → auto → default, etc.
+Note: `Shift+Tab` cycles through modes: default → plan → auto-accept, etc.
 
 ### 1.8 - Context Management
 As you work, conversation history fills up Claude's context window (~200K tokens).

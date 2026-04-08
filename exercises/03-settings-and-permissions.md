@@ -40,32 +40,28 @@ Launch Claude and ask it to:
 3. "Install requests" → Should auto-approve (`uv` is allowed)
 
 ### 3.3 - Tighten Permissions
-Edit `.claude/settings.json` to only allow read-only operations:
+Temporarily replace the `permissions` section in `.claude/settings.json` with read-only rules:
 ```json
-{
-  "permissions": {
-    "allow": ["Read", "Glob", "Grep"],
-    "deny": ["Edit(*)", "Write(*)", "Bash(*)"]
-  }
+"permissions": {
+  "allow": ["Read", "Glob", "Grep"],
+  "deny": ["Edit(*)", "Write(*)", "Bash(*)"]
 }
 ```
 Now ask Claude to edit a file. What happens?
 
-Restore the original settings when done.
+Restore the original settings when done (`git checkout .claude/settings.json`).
 
 ### 3.4 - Add Environment Variables
-Add to `.claude/settings.local.json` (create this file):
+Add the following `env` key to your existing `.claude/settings.json` (alongside `permissions`, `hooks`, etc.):
 ```json
-{
-  "env": {
-    "TASKFLOW_ENV": "workshop",
-    "DEBUG": "true"
-  }
+"env": {
+  "TASKFLOW_ENV": "workshop",
+  "DEBUG": "true"
 }
 ```
 Ask Claude: "Print the TASKFLOW_ENV environment variable"
 
-Note: `.local.json` is gitignored - perfect for personal config and secrets.
+Note: For sensitive values, use `.claude/settings.local.json` instead - this is gitignored and not shared with the team.
 
 ## Key Takeaways
 - Settings enforce behavior; CLAUDE.md guides behavior

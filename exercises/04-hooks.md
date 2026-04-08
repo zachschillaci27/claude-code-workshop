@@ -26,10 +26,11 @@ See more https://code.claude.com/docs/en/hooks-guide#how-hooks-work.
 ## Tasks
 
 ### 4.1 - See Hooks in Action
-This project has two hooks pre-configured. Look at `.claude/settings.json`:
+This project has three hooks pre-configured. Look at `.claude/settings.json`:
 
 1. **PostToolUse (Edit|Write)**: Auto-formats Python files with `ruff`
 2. **PreToolUse (Edit|Write)**: Blocks hardcoded secrets
+3. **Notification**: Prints a message when Claude needs your attention
 
 Test the auto-formatter:
 ```
@@ -67,22 +68,20 @@ Edit `.claude/settings.json` and add to the `PostToolUse` array:
 Now ask Claude to make a change - tests run automatically!
 
 ### 4.4 - Create a Notification Hook
-Add to your user settings (`~/.claude/settings.json`):
+Add the following `hooks` key to your user settings (`~/.claude/settings.json`), merging it with any existing content:
 ```json
-{
-  "hooks": {
-    "Notification": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "echo '🔔 Claude needs your attention' >&2"
-          }
-        ]
-      }
-    ]
-  }
+"hooks": {
+  "Notification": [
+    {
+      "matcher": "",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "echo '🔔 Claude needs your attention' >&2"
+        }
+      ]
+    }
+  ]
 }
 ```
 

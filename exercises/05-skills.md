@@ -116,6 +116,8 @@ Group changes under: Added, Changed, Fixed, Removed.
 The `!`command`` syntax runs before Claude sees the prompt, injecting live data.
 
 ### 5.4 - Create a Skill with No AI (Direct Execution)
+Create `.claude/skills/status/SKILL.md`:
+
 ```yaml
 ---
 name: status

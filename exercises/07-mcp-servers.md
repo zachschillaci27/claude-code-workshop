@@ -7,7 +7,7 @@
 >
 > **Network sandbox:** The enterprise sandbox restricts outbound connections to
 > `*.anthropic.com` and `*.claude.ai` only. The GitHub MCP server (`api.githubcopilot.com`)
-> will be blocked unless you extend your personal allowlist in `~/.claude/settings.json`:
+> may be blocked unless you extend your personal allowlist in `~/.claude/settings.json`:
 > ```json
 > {
 >   "sandbox": {
@@ -84,8 +84,9 @@ before starting Claude Code to enable live GitHub integration:
 export GITHUB_TOKEN=<your-fine-grained-pat>
 ```
 
-> **Security reminder:** Use a fine-grained personal access token with minimal scopes
-> (read-only). Never hardcode tokens in `.mcp.json` — use `${VAR}` references so the
+> **Security reminder:** Use a fine-grained personal access token scoped to the
+> repositories you need (read + write for issues/PRs if you want to try task 7.2).
+> Never hardcode tokens in `.mcp.json` — use `${VAR}` references so the
 > token stays out of version control. The token is sent in the `Authorization` header
 > on every MCP request.
 

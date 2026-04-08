@@ -82,8 +82,9 @@ claude --continue        # Resume your last session
 claude --resume          # Pick from a list of recent sessions
 ```
 
-Resumed sessions reload the conversation history and memory, but the context window
-starts fresh — so you may need to re-read files Claude previously had in context.
+Resumed sessions reload the conversation messages and memory, but raw tool outputs
+(file contents, bash results) from the previous session may be summarized or trimmed —
+so you may need to re-read files Claude previously had in context.
 
 ## Tasks
 
