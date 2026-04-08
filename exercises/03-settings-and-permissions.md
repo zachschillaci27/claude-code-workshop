@@ -37,7 +37,7 @@ Notice:
 Launch Claude and ask it to:
 1. "Run the tests" → Should auto-approve (`uv` is in allow list)
 2. "Delete all files in src/" → Should be blocked (rm -rf is in deny list)
-3. "Install requests" → Should auto-approve (`uv` is allowed)
+3. "Install requests" → Should auto-approve (`uv` is allowed). Note: in sandboxed environments with restricted network access, the permission check passes but the download may fail if `pypi.org` is not in `allowedDomains`.
 
 ### 3.3 - Tighten Permissions
 Temporarily replace the `permissions` section in `.claude/settings.json` with read-only rules:

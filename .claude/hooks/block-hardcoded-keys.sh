@@ -15,10 +15,10 @@ fi
 
 # Check for common secret patterns
 PATTERNS=(
-    'password\s*=\s*"[^"]{8,}"'
-    'api_key\s*=\s*"[^"]{8,}"'
-    'secret\s*=\s*"[^"]{8,}"'
-    'token\s*=\s*"[A-Za-z0-9]{20,}"'
+    'password\s*=\s*["'"'"'][^"'"'"']{8,}["'"'"']'
+    'api_key\s*=\s*["'"'"'][^"'"'"']{8,}["'"'"']'
+    'secret\s*=\s*["'"'"'][^"'"'"']{8,}["'"'"']'
+    'token\s*=\s*["'"'"'][A-Za-z0-9]{20,}["'"'"']'
     'AWS_SECRET_ACCESS_KEY'
     'PRIVATE_KEY'
 )
